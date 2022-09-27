@@ -1,0 +1,17 @@
+first make sure the USB is named: SamsungUSB
+
+Follow these steps to make it mountable:
+
+sudo mkdir /mnt/SamsungUSB
+(plug in the USB)
+sudo mount /dev/sda1 /mnt/SamsungUSB
+(Now check that the USB has been mounted using ls)
+
+Now use sudo crontab -e
+
+Add the following to the crontab file:
+
+@reboot sudo mount /dev/sda1 /mnt/SamsungUSB
+@reboot sudo python3 /home/pi/Scripts/OtterSpotter/main.py &
+
+Now use sudo raspi-cofig to switch the pi to command line mode
